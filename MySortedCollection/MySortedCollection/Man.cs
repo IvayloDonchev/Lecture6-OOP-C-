@@ -11,7 +11,7 @@ namespace MySortedCollection
         private DateTime birthDate { get; }
         private string Name { get; }
         public int Age => DateTime.Today.Year - birthDate.Year;
-        public Man(string name, DateTime date)
+        public Man(string name, DateTime date) 
         {
             this.Name = name;
             this.birthDate = date;
