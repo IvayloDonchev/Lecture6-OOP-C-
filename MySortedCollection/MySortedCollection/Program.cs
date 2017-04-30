@@ -15,10 +15,20 @@ namespace MySortedCollection
             Man m3 = new Man("Victor Stefanov", new DateTime(1998, 10, 5));
             Man m4 = new Man("Angel Dimitrov",  new DateTime(1998, 10, 4));
             Man m5 = new Man("Petar Hristov", 15, 3, 1990); 
+
             Man[] array = new Man[] { m1, m2, m3, m4, m5 };
             Array.Sort(array);
-            foreach(var man in array)
+            //Array.Sort(array, (x, y) =>  // още един начин за сортиране (без да е необходим интерфейс)
+            //        {
+            //            if (x.Age < y.Age) return -1;
+            //            else if (x.Age == y.Age) return 0;
+            //            else return 1;
+            //        }
+            //);
+
+            foreach (var man in array)
                 Console.WriteLine(man);
+
             List<Man> manList = new List<Man>() { m1, m2, m3, m4, m5 };
             manList.Sort();
             Console.WriteLine();
