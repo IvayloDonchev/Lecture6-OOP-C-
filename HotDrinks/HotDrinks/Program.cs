@@ -18,7 +18,7 @@ namespace HotDrinks
             };
             //foreach (var drink in hotDrinks)
             //    drink.AddShugar(1);
-            foreach(var dr ink in hotDrinks)
+            foreach(var drink in hotDrinks)
                 Console.WriteLine(drink);
         }
     }
