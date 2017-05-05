@@ -7,20 +7,26 @@ using System.Windows;
 
 namespace Shapes
 {
+
+    public struct Position
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public override string ToString() => $"({X},{Y})";
+    }
     public abstract class Shape
     {
-        public int x, y; // координати на центъра на фигурата
-        public abstract double Area { get; }
-        public Shape(int x=0, int y=0) { this.x = x; this.y = y; }
+        public Position Pos;        // координати на центъра на фигурата
+        public abstract double Area { get; }  // площ на фигурата
     }
 
     public class Rectangle : Shape
     {
         private int a, b; // дължини на страните
-        public Rectangle(int a, int b) : base(1,2)
+        public Rectangle(int a, int b, int posX=0, int posY=0)
         {
-            this.a = a;
-            this.b = b;
+            this.Pos.X = posX; this.Pos.Y = posY;
+            this.a = a; this.b = b;
             if (a <= 0 || a > 1920)
                 throw new ArgumentOutOfRangeException("a");
             if (b <= 0 || b > 1080)
@@ -31,15 +37,15 @@ namespace Shapes
 
         public override string ToString()
         {
-            return $"Rectangle with sides {a} and {b}";
+            return $"Rectangle with sides {a} and {b} and center {Pos}";
         }
     }
-
     public class Circle : Shape
     {
         private int radius;
-        public Circle(int r)
+        public Circle(int r,int posX= 0, int posY = 0)
         {
+            this.Pos.X = posX; this.Pos.Y = posY;
             this.radius = r;
             if (radius <= 0)
                 throw new ArgumentOutOfRangeException("radius");
@@ -47,7 +53,7 @@ namespace Shapes
         public override double Area => Math.PI * radius * radius;
         public override string ToString()
         {
-            return $"Circle with radius {radius}";
+            return $"Circle with radius {radius} and center {Pos}";
         }
     }
     class Program
